@@ -95,7 +95,7 @@ st.write("""
     
     💡 Melalui prediksi model regresi, kita dapat memahami lebih dalam mengenai faktor-faktor yang memengaruhi jumlah penyewaan sepeda dan dapat memanfaatkan wawasan ini untuk **merencanakan kebijakan operasional** atau **strategi pemasaran** yang lebih baik 📈.
 """)
-===========================================================================================================================================================================================================================================================================
+
 st.write("""
     ✨ **Tetap Semangat!** ✨
     Dengan pemahaman yang lebih baik tentang data penyewaan sepeda dan faktor-faktor yang mempengaruhinya, kita bisa merencanakan langkah-langkah yang lebih cerdas dan berdampak besar 🚴‍♂️📈.
