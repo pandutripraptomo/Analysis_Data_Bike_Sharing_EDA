@@ -61,3 +61,5 @@ y_pred = model.predict(X_test)
 # Evaluasi model
 mse = mean_squared_error(y_test, y_pred)
 st.write(f"Mean Squared Error (MSE): {mse}")
+
+
