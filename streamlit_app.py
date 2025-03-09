@@ -26,7 +26,7 @@ if st.checkbox('Tampilkan Data Mentah 🧐'):
     st.write(hour_data.head())  # Tampilkan 5 baris pertama untuk preview data
 
 # Visualisasi jumlah penyewaan sepeda berdasarkan musim dan cuaca
-st.subheader("Penyewaan Sepeda Berdasarkan Musim dan Cuaca 🌞🌧️")
+st.subheader("📊 Penyewaan Sepeda Berdasarkan Musim dan Cuaca 🌞🌧️")
 st.write("""
     Dalam analisis ini, kita melihat bagaimana **musim** dan **kondisi cuaca** memengaruhi jumlah penyewaan sepeda.
     Visualisasi berikut memperlihatkan bagaimana **musim** (musim semi, panas, gugur, dan dingin) berhubungan dengan kondisi cuaca yang berbeda (seperti cuaca cerah, mendung, atau hujan).
@@ -39,7 +39,7 @@ ax.set_title('Penyewaan Sepeda Berdasarkan Musim dan Cuaca')
 st.pyplot(fig)
 
 # Visualisasi jumlah penyewaan sepeda berdasarkan kondisi cuaca
-st.subheader('Penyewaan Sepeda Berdasarkan Kondisi Cuaca 🌥️🌧️')
+st.subheader('🌥️ Penyewaan Sepeda Berdasarkan Kondisi Cuaca 🌧️')
 st.write("""
     Pada grafik berikut, kita dapat melihat distribusi penyewaan sepeda berdasarkan kondisi cuaca.
     **Boxplot** ini akan menunjukkan variasi jumlah penyewaan sepeda untuk setiap kategori cuaca, memberikan wawasan lebih mendalam tentang tren dan pola yang ada.
@@ -60,6 +60,7 @@ st.write(filtered_data.head())  # Tampilkan 5 baris data yang difilter
 
 # Analisis lebih dalam dengan regresi linier (Opsional)
 st.write("""
+    🔍 **Analisis Regresi Linier:**
     Selain visualisasi, kita juga dapat mengembangkan model prediksi untuk **menilai pengaruh fitur-fitur tertentu** terhadap jumlah penyewaan sepeda.
     Dengan menggunakan regresi linier, kita akan memprediksi jumlah penyewaan sepeda berdasarkan beberapa fitur penting seperti suhu 🌡️, kelembaban 🌬️, kecepatan angin 💨, musim 🏖️, dan status liburan 🎉.
 """)
@@ -88,8 +89,20 @@ st.write("""
 
 # Menampilkan kesimpulan dan insight lebih lanjut
 st.write("""
+    📝 **Kesimpulan & Insight:**
     Secara keseluruhan, analisis ini menunjukkan bahwa **musim** dan **cuaca** memiliki pengaruh yang signifikan terhadap jumlah penyewaan sepeda. 
     **Musim panas** 🌞 dan cuaca cerah ☀️ sering kali menyebabkan peningkatan penyewaan sepeda 🚲, sementara cuaca buruk seperti hujan 🌧️ dapat mengurangi minat penyewaan sepeda.
     
-    Melalui prediksi model regresi, kita dapat memahami lebih dalam mengenai faktor-faktor yang memengaruhi jumlah penyewaan sepeda dan dapat memanfaatkan wawasan ini untuk **merencanakan kebijakan operasional** atau **strategi pemasaran** yang lebih baik 💡📈.
+    💡 Melalui prediksi model regresi, kita dapat memahami lebih dalam mengenai faktor-faktor yang memengaruhi jumlah penyewaan sepeda dan dapat memanfaatkan wawasan ini untuk **merencanakan kebijakan operasional** atau **strategi pemasaran** yang lebih baik 📈.
+""")
+
+st.write("""
+    ✨ **Tetap Semangat!** ✨
+    Dengan pemahaman yang lebih baik tentang data penyewaan sepeda dan faktor-faktor yang mempengaruhinya, kita bisa merencanakan langkah-langkah yang lebih cerdas dan berdampak besar 🚴‍♂️📈.
+    
+    🌟 **Terus berinovasi dan berkreasi!** Jangan pernah berhenti untuk menemukan wawasan baru dari data yang ada.
+    
+    👨‍💻 Dashboard ini dibuat dengan penuh semangat oleh **Pandu Tri Praptomo**. Terima kasih telah menjelajahi analisis ini! 🎉
+
+    🌱 "**The best way to predict the future is to create it.**" – **Abraham Lincoln** 🌱
 """)
