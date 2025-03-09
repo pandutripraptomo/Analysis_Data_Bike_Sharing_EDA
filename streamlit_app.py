@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
 # Setel judul aplikasi
-st.title("🚴‍♂️ Dashboard Analisis Bike Sharing: Menyingkap Tren dan Pola Bike Sharing")
+st.title("🚴‍♂️ Dashboard Analisis Bike Sharing")
 
 # Tambahkan deskripsi atau instruksi
 st.write("""
