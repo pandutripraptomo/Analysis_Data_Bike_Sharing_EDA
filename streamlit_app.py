@@ -78,4 +78,26 @@ model.fit(X_train, y_train)
 
 # Prediksi dan evaluasi model
 y_pred = model.predict(X_test)
-mse = mean_squared_error(y_test, y_p
+mse = mean_squared_error(y_test, y_pred)
+
+st.write(f"**Mean Squared Error (MSE): {mse:.2f}**")
+st.write("""
+    **MSE (Mean Squared Error)** mengukur seberapa baik model dalam memprediksi jumlah bike sharing. 
+    Nilai MSE yang lebih rendah menunjukkan model yang lebih baik dalam memprediksi hasil yang sebenarnya. 
+    Dengan MSE sebesar **23359.87**, model ini memberikan gambaran yang cukup baik, meskipun masih ada ruang untuk perbaikan. 🔍📈
+""")
+
+# Menampilkan kesimpulan dan insight lebih lanjut
+st.write("""
+    📝 **Kesimpulan & Insight:**
+    Secara keseluruhan, analisis ini menunjukkan bahwa **musim** dan **cuaca** memiliki pengaruh yang signifikan terhadap jumlah bike sharing. 
+    **Musim panas** 🌞 dan cuaca cerah ☀️ sering kali menyebabkan peningkatan bike sharing 🚲, sementara cuaca buruk seperti hujan 🌧️ dapat mengurangi minat bike sharing.
+    
+    💡 Melalui prediksi model regresi, kita dapat memahami lebih dalam mengenai faktor-faktor yang memengaruhi jumlah bike sharing dan dapat memanfaatkan wawasan ini untuk **merencanakan kebijakan operasional** atau **strategi pemasaran** yang lebih baik 📈.
+""")
+
+st.write(""" 
+    👨‍💻 Dashboard ini dibuat dengan penuh semangat oleh **Pandu Tri Praptomo**. Terima kasih telah menjelajahi analisis ini! 🎉
+
+    🌱 "**The best way to predict the future is to create it.**" – **Abraham Lincoln** 🌱
+""")
