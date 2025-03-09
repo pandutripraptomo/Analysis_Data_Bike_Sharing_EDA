@@ -13,7 +13,7 @@ st.write("""
 """)
 
 # Memuat data (Pastikan path file dataset sudah benar)
-hour_data = pd.read_csv('/path/to/hour.csv')  # Perbarui path sesuai dengan lokasi file
+hour_data = pd.read_csv('hour.csv')  # Perbarui path sesuai dengan lokasi file
 
 # Menampilkan data jika checkbox dipilih
 if st.checkbox('Tampilkan Data Mentah'):
