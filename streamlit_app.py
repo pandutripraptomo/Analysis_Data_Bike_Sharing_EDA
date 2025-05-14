@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 sns.set(style='dark')
-    
+
 def create_daily_rentals_df(df):
     daily_rentals_df = df.resample(rule='D', on='dteday').agg({
         "registered": "sum",
@@ -68,7 +68,7 @@ all_df = pd.read_csv("https://raw.githubusercontent.com/anandashadrina/BikeShari
 datetime_columns = ["dteday"]
 all_df.sort_values(by="dteday", inplace=True)
 all_df.reset_index(inplace=True)
- 
+
 for column in datetime_columns:
     all_df[column] = pd.to_datetime(all_df[column])
 
@@ -79,14 +79,13 @@ with st.sidebar:
     st.image("https://raw.githubusercontent.com/anandashadrina/BikeSharingDataset-Dicoding/main/dashboard/logo.png")
     
     start_date, end_date = st.date_input(
-        label='Rentang Waktu',min_value=min_date,
+        label='Rentang Waktu', min_value=min_date,
         max_value=max_date,
         value=[min_date, max_date]
     )
 
 main_df = all_df[(all_df["dteday"] >= str(start_date)) & 
                 (all_df["dteday"] <= str(end_date))]
-
 
 byhour_df = create_byhour_df(main_df)
 daily_rentals_df = create_daily_rentals_df(main_df)
@@ -96,16 +95,16 @@ byseason_df = create_byseasons_df(main_df)
 byweather_df = create_byweather_df(main_df)
 clustering = create_clustering(main_df)
 
-st.header('Bike Sharing Dashboard 🚲')
+st.header('Pandu Tri Praptomo - Bike Sharing Dashboard 🚲')
 
 st.subheader('Daily Rentals')
- 
+
 col1, col2, col3 = st.columns(3)
- 
+
 with col1:
     total_rentals = daily_rentals_df.total_customer.sum()
     st.metric("Total Rentals", value=total_rentals)
- 
+
 with col2:
     total_registered = daily_rentals_df.total_registered.sum()
     st.metric("Total Registered Customer", value=total_registered)
@@ -147,9 +146,9 @@ weather_colors = {
 }
 
 st.subheader("Rental Patterns")
- 
+
 col1, col2 = st.columns(2)
- 
+
 with col1:
     fig, ax = plt.subplots(figsize=(30,15))
     sns.barplot(
@@ -244,5 +243,4 @@ plt.tight_layout()
 ax.set_title("Percentage of Registered vs Casual Customer", fontsize=20 , pad=20)
 st.pyplot(fig) 
 
-
-st.caption('Copyright © anandashadrina 2024')
+st.caption('Copyright © Pandu Tri Praptomo 2025')
