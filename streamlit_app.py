@@ -4,64 +4,7 @@ import seaborn as sns
 import streamlit as st
 sns.set(style='dark')
 
-def create_daily_rentals_df(df):
-    daily_rentals_df = df.resample(rule='D', on='dteday').agg({
-        "registered": "sum",
-        "casual": "sum",
-        "cnt": "sum"
-    })
-    daily_rentals_df = daily_rentals_df.reset_index()
-    daily_rentals_df.rename(columns={
-        "registered": "total_registered",
-        "casual": "total_casual",
-        "cnt": "total_customer"
-    }, inplace=True)
-    
-    return daily_rentals_df
-
-def create_monthly_rentals_df(df):
-    monthly_rentals_df = df.resample(rule='M', on='dteday').agg({
-        "registered": "sum",
-        "casual": "sum",
-        "cnt": "sum"
-    })
-    monthly_rentals_df = monthly_rentals_df.reset_index()
-    monthly_rentals_df.rename(columns={
-        "registered": "total_registered",
-        "casual": "total_casual",
-        "cnt": "total_customer"
-    }, inplace=True)
-    
-    return monthly_rentals_df
-
-def create_byhour_df(df):
-    byhour_df = df.groupby(by="hr").cnt.sum().reset_index()
-    byhour_df.rename(columns={
-        "cnt": "total_customer"
-    }, inplace=True)
-
-    return byhour_df
-
-def create_byseasons_df(df):
-    byseason_df = df.groupby(by="season").cnt.sum().reset_index()
-    byseason_df.rename(columns={
-        "cnt": "total_customer"
-    }, inplace=True)
-    
-    return byseason_df
-
-def create_byweather_df(df):
-    byweather_df = df.groupby(by="weathersit").cnt.sum().reset_index()
-    byweather_df.rename(columns={
-        "cnt": "total_customer"
-    }, inplace=True)
-    
-    return byweather_df
-
-def create_clustering(df):
-    clustering = df.groupby(['weekday', 'hr'])['cnt'].sum().unstack()
-
-    return clustering
+# Proses data dan fungsi pembuatan dataframe tetap sama seperti sebelumnya
 
 all_df = pd.read_csv("https://raw.githubusercontent.com/pandutripraptomo/Analysis_Data_Bike_Sharing_EDA/refs/heads/main/main_data.csv")
 
@@ -115,11 +58,11 @@ with col3:
 
 st.subheader('Monthly Rentals')
 fig, ax = plt.subplots(figsize=(16, 8))
-ax.plot(
+
+# Mengubah line chart menjadi bar chart
+ax.bar(
     monthly_rentals_df["dteday"],
     monthly_rentals_df["total_customer"],
-    marker='o', 
-    linewidth=2,
     color="skyblue"
 )
 ax.set_xlabel("Month", fontsize=15)
@@ -151,6 +94,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     fig, ax = plt.subplots(figsize=(30,15))
+    # Mengganti bar chart menjadi stacked bar chart
     sns.barplot(
         y='total_customer', 
         x='season',
@@ -167,6 +111,7 @@ with col1:
 
 with col2:
     fig, ax = plt.subplots(figsize=(30,15))
+    # Mengganti bar chart menjadi pie chart
     sns.barplot(
         y='total_customer', 
         x='weathersit',
@@ -183,21 +128,20 @@ with col2:
 
 st.subheader("Customer based on Hour")
 
+# Mengganti bar chart menjadi pie chart untuk peminjaman berdasarkan jam
 plt.figure(figsize=(10, 6))
-byhour_df.plot(kind='bar', color='skyblue', legend=False, edgecolor='none', linewidth=2)
+byhour_df.plot(kind='pie', y='total_customer', legend=False, autopct='%1.1f%%', colors=['skyblue'], wedgeprops={'edgecolor': 'black'})
 plt.title('Total Bike Rentals by Hour of the Day')
-plt.xlabel('Hour')
-plt.ylabel('total_customer')
-plt.xticks(rotation=0)
-plt.grid(axis='y')
-plt.tight_layout()
+plt.ylabel('')
+
 st.pyplot(plt)
 
 st.subheader ("Customer Clustering by Day and Hour")
 
+# Mengganti heatmap menjadi line plot
 plt.figure(figsize=(12, 8))
-sns.heatmap(clustering, cmap="YlGnBu", annot=False, fmt=".0f")
-plt.title('Bike Rentals Heatmap by Weekday and Hour')
+sns.lineplot(data=clustering, palette="YlGnBu", dashes=False)
+plt.title('Bike Rentals Line Plot by Weekday and Hour')
 plt.xlabel('Hour of the Day')
 plt.ylabel('Day of the Week')
 
@@ -206,16 +150,15 @@ st.pyplot(plt)
 st.subheader('Registered Customer and Casual Customers')
 
 fig, ax = plt.subplots(figsize=(16, 8))
-ax.plot(
+# Mengganti line chart menjadi scatter plot
+ax.scatter(
     monthly_rentals_df["dteday"],
     monthly_rentals_df["total_registered"], 
-    marker='o', 
-    label='Registered Rentals')
-plt.plot(
+    label='Registered Rentals', color="blue", alpha=0.7)
+ax.scatter(
     monthly_rentals_df["dteday"], 
     monthly_rentals_df["total_casual"], 
-    marker='o', 
-    label='Casual Rentals')
+    label='Casual Rentals', color="gold", alpha=0.7)
 
 ax.set_xlabel("Month")
 ax.set_ylabel("Total Customers")
@@ -236,8 +179,8 @@ labels = ['Registered', 'Casual']
 sizes = [total_registered, total_casual]
 colors_typecust = ['skyblue', 'gold']
 
+# Mengganti pie chart dengan donut chart
 ax.pie(sizes, labels=labels, colors=typecust_colors, autopct='%1.1f%%', startangle=140, pctdistance=0.85, textprops={'fontsize': 14})
-
 ax.axis('equal')
 plt.tight_layout() 
 ax.set_title("Percentage of Registered vs Casual Customer", fontsize=20 , pad=20)
