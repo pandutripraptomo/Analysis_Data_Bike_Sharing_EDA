@@ -1,191 +1,114 @@
-# 🚴‍♂️ **Bike Sharing Analysis Dashboard** 🚴‍♀️
+# Bike Sharing Data Analysis Dashboard ✨
 
-Welcome to the **Bike Sharing Analysis Dashboard**, your interactive data hub for exploring bike sharing trends! Built with **Streamlit**, this dashboard provides insightful visualizations to help you understand what factors influence bike rentals. Whether you’re interested in exploring weather conditions, seasonal trends, or even predictions for future rentals, this app has it all!
+## Deskripsi Proyek
 
----
+Proyek ini adalah aplikasi **Streamlit** yang menganalisis dan memvisualisasikan data peminjaman sepeda menggunakan dataset **Bike Sharing**. Aplikasi ini mengintegrasikan berbagai analisis data, visualisasi interaktif, dan fitur-fitur menarik untuk memudahkan pemahaman tentang pola penggunaan sepeda berdasarkan waktu, cuaca, musim, dan jenis pelanggan.
 
-## 📑 **Table of Contents**
+### Fitur Utama:
+- **Dashboard Interaktif** yang menampilkan data peminjaman sepeda harian, bulanan, berdasarkan jam, musim, dan cuaca.
+- **Grafik dan Visualisasi** menggunakan **Matplotlib**, **Seaborn**, dan **Plotly**.
+- **Analisis** berdasarkan:
+  - Jumlah peminjam sepeda harian dan bulanan.
+  - Distribusi peminjaman berdasarkan jam, cuaca, dan musim.
+  - Analisis cluster berdasarkan hari dan jam.
+- **Menampilkan GIF animasi** sepeda yang menarik di sidebar untuk memperkaya pengalaman pengguna.
 
-1. [🌟 Overview](#overview)
-2. [🛠️ Features](#features)
-3. [⚙️ Requirements](#requirements)
-4. [📥 Installation](#installation)
-5. [🚀 Usage](#usage)
-6. [📈 Modeling (Optional)](#modeling-optional)
-7. [📊 Visualizations](#visualizations)
-8. [☁️ Deploying to Streamlit Cloud](#deploying-to-streamlit-cloud)
-9. [📝 License](#license)
+## Prasyarat
 
----
+Sebelum menjalankan aplikasi ini, pastikan Anda memiliki **Python** yang terinstal di sistem Anda. Berikut adalah daftar pustaka yang dibutuhkan:
 
-## 🌟 **Overview**
+- **Streamlit**: Untuk membuat dashboard interaktif.
+- **Pandas**: Untuk manipulasi data.
+- **Matplotlib**: Untuk membuat visualisasi grafik.
+- **Seaborn**: Untuk visualisasi statistik.
+- **Plotly**: Untuk grafik interaktif.
+- **Streamlit-folium**: Jika ingin menambahkan peta interaktif (opsional).
 
-This **Bike Sharing Analysis Dashboard** allows you to explore bike rental data in a fun and interactive way. By visualizing key factors like **season**, **weather**, and **time of day**, users can easily identify trends and patterns in bike sharing behavior. Whether you're curious about how different seasons affect rentals or interested in predicting future trends, this app is the perfect tool to dive into the data.
+### Setup Environment
 
----
+Pilih salah satu cara berikut untuk setup lingkungan pengembangan:
 
-## 🛠️ **Features**
+### 1. **Setup Environment - Anaconda**
 
-- **👀 Data Overview**: View raw data with a simple checkbox to explore the dataset's structure and gain insights.
-- **📊 Visualizations**:
-  - **Countplot**: See the number of bike rentals based on the season and weather conditions.
-  - **Boxplot**: Explore the distribution of rentals under various weather conditions.
-- **⚡ Interactivity**:
-  - **Slider**: Filter and display data for specific years (2011 or 2012) with an interactive slider.
-- **📈 Modeling** (Optional):
-  - **Predictions**: A Linear Regression model predicts bike rental counts based on weather conditions, season, and more.
+Jika Anda menggunakan **Anaconda**, Anda dapat mengikuti langkah-langkah berikut untuk membuat lingkungan terpisah:
 
----
+# Membuat lingkungan virtual dengan Anaconda
+conda create --name main-ds python=3.9
 
-## ⚙️ **Requirements**
+# Mengaktifkan lingkungan
+conda activate main-ds
 
-Before you get started, make sure you have the following Python packages installed:
-
-- **Python 3.x**
-- **Streamlit**
-- **Pandas**
-- **Seaborn**
-- **Matplotlib**
-- **Scikit-learn**
-
-To install the required packages, run:
-
-```bash
+# Install dependencies dari requirements.txt
 pip install -r requirements.txt
 
-To install the required packages, run:
 
-```bash
+### 2. **Setup Environment - Shell/Terminal**
+
+Jika Anda menggunakan **pipenv**, berikut adalah langkah-langkah untuk setup proyek:
+
+
+# Membuat direktori proyek
+mkdir proyek_analisis_data
+cd proyek_analisis_data
+
+# Install dependencies dengan pipenv
+pipenv install
+
+# Masuk ke shell pipenv
+pipenv shell
+
+# Install dependencies dari requirements.txt
 pip install -r requirements.txt
-```
 
-### requirements.txt
 
-```plaintext
-streamlit
-pandas
-seaborn
-matplotlib
-scikit-learn
-```
+## Menjalankan Aplikasi
 
----
+Setelah menyiapkan lingkungan, Anda dapat menjalankan aplikasi **Streamlit** dengan langkah-langkah berikut:
 
-## 📥 **Installation**
 
-To get this app running on your local machine, follow these simple steps:
+# Jalankan aplikasi Streamlit
+streamlit run dashboard.py
 
-1. **Clone the repository**:
 
-   ```bash
-   git clone https://github.com/yourusername/Bike_Sharing_Analysis_Dashboard.git
-   ```
+Aplikasi ini akan terbuka di browser default Anda.
 
-2. **Navigate into the project directory**:
+## Fitur Aplikasi
 
-   ```bash
-   cd Bike_Sharing_Analysis_Dashboard
-   ```
+* **Data Interaktif**: Gunakan filter tanggal untuk menyesuaikan rentang waktu yang ingin Anda lihat.
+* **Grafik Peminjaman Sepeda**: Menampilkan grafik bulanan dan harian mengenai peminjaman sepeda secara keseluruhan, peminjam terdaftar, dan peminjam kasual.
+* **Analisis Berdasarkan Jam dan Musim**: Menampilkan tren peminjaman sepeda berdasarkan jam dalam sehari dan musim.
+* **Pemetaan Interaktif**: Visualisasikan data berbasis lokasi dengan peta interaktif (jika ditambahkan).
 
-3. **Install the dependencies**:
+## Struktur Proyek
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+Bike-Sharing-Dashboard/
+├── dashboard.py            # Aplikasi Streamlit utama
+├── data/
+│   ├── bike_sharing.csv   # Dataset Bike Sharing
+├── images/
+│   └── logo.gif           # GIF atau gambar logo yang digunakan di aplikasi
+└── README.md              # Dokumentasi proyek
 
----
+## Penulis
 
-## 🚀 **Usage**
+* **Pandu Tri Praptomo** - [LinkedIn](https://www.linkedin.com/in/pandutripraptomo/) | [GitHub](https://github.com/pandutripraptomo)
 
-Running the app is simple:
+## Lisensi
 
-1. Ensure the **dataset file (`hour.csv`)** is in the correct path and update the file path if needed.
-2. To start the Streamlit app, use the following command:
+Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detail lebih lanjut.
 
-   ```bash
-   streamlit run streamlit_app.py
-   ```
+## Kontak
 
-   This will launch the app in your web browser where you can interact with it!
+Jika Anda memiliki pertanyaan atau ingin berkontribusi dalam pengembangan proyek ini, jangan ragu untuk menghubungi saya di **[pandutripraptomo@gmail.com](mailto:pandutripraptomo@gmail.com)**.
 
----
+### Penjelasan:
+1. **Deskripsi Proyek**: Menggambarkan aplikasi yang dibangun dengan tujuan analisis data peminjaman sepeda.
+2. **Prasyarat**: Menyebutkan pustaka yang dibutuhkan untuk menjalankan aplikasi.
+3. **Setup Environment**: Menyediakan dua opsi untuk setup lingkungan pengembangan, yaitu menggunakan Anaconda atau `pipenv` dengan instruksi yang jelas.
+4. **Menjalankan Aplikasi**: Memberikan instruksi untuk menjalankan aplikasi Streamlit dengan perintah `streamlit run`.
+5. **Fitur Aplikasi**: Menyediakan rincian tentang fitur utama aplikasi.
+6. **Struktur Proyek**: Memberikan gambaran tentang struktur folder dan file dalam proyek.
+7. **Penulis dan Lisensi**: Menyertakan informasi tentang kontributor proyek dan lisensinya.
 
-## 📈 **Modeling (Optional)**
-
-For those interested in **predicting** bike rental counts based on weather, season, and other features, the app includes an **optional Linear Regression model**. The model uses the following features:
-- Temperature
-- Humidity
-- Windspeed
-- Season
-- Holiday status
-
-The app calculates the **Mean Squared Error (MSE)** to evaluate the performance of the regression model.
-
-```python
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
-
-# Prepare features and target for prediction
-X = hour_data[['temp', 'hum', 'windspeed', 'season', 'holiday']]
-y = hour_data['cnt']
-
-# Split data for training and testing
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Train the model
-model = LinearRegression()
-model.fit(X_train, y_train)
-
-# Predictions
-y_pred = model.predict(X_test)
-
-# Evaluate model
-mse = mean_squared_error(y_test, y_pred)
-st.write(f"Mean Squared Error (MSE): {mse}")
-```
-
----
-
-## 📊 **Visualizations**
-
-This dashboard includes several insightful visualizations:
-
-- **Countplot**: Displays the number of bike rentals grouped by season and weather condition. You’ll quickly see how these factors affect bike rental behavior.
-
-  Example:
-  ```python
-  sns.countplot(data=hour_data, x='season', hue='weathersit')
-  ```
-
-- **Boxplot**: Shows how bike rental distributions vary across different weather conditions. It helps identify how rentals fluctuate in different weather conditions.
-
-  Example:
-  ```python
-  sns.boxplot(data=hour_data, x='weathersit', y='cnt')
-  ```
-
-- **Interactive Slider**: Filter the dataset by selecting a specific year (2011 or 2012). This is useful for comparing trends across different years.
-
----
-
-## ☁️ **Deploying to Streamlit Cloud**
-
-Want to share your app with the world? Deploy it to **Streamlit Cloud** in just a few steps:
-
-1. **Push your project to GitHub** (if you haven't already).
-2. Go to **[Streamlit Cloud](https://streamlit.io/cloud)** and log in with your **GitHub** account.
-3. Click on **New App** and select the repository with your Streamlit app.
-4. Streamlit will automatically deploy the app and provide a URL to share.
-
----
-
-## 📝 **License**
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
----
-
-Now you're all set! Enjoy exploring bike sharing trends and visualizing data with this interactive dashboard. Feel free to customize and improve it, and don’t hesitate to reach out if you need help or have suggestions. 😄
-```
+Anda dapat menyesuaikan lebih lanjut jika ada detail atau fitur tambahan pada proyek Anda!
 
