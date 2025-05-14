@@ -77,7 +77,7 @@ max_date = all_df["dteday"].max()
 
 with st.sidebar:
     # Menampilkan GIF sepeda dari URL yang diberikan
-    st.image("https://github.com/pandutripraptomo/Analysis_Data_Bike_Sharing_EDA/blob/main/Streamlit_Dashboard/Postal%20Worker%20Bike%20GIF%20by%20Xbox.gif?raw=true", use_column_width=True)
+    st.image("https://github.com/pandutripraptomo/Analysis_Data_Bike_Sharing_EDA/blob/2528e1a61bb3c160e7c5172abf25d265368416cb/Streamlit_Dashboard/bike.gif")
     
     start_date, end_date = st.date_input(
         label='Rentang Waktu', min_value=min_date,
