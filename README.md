@@ -13,7 +13,7 @@ Proyek ini adalah aplikasi **Streamlit** yang menganalisis dan memvisualisasikan
   - Analisis cluster berdasarkan hari dan jam.
 - **Menampilkan GIF animasi** sepeda yang menarik di sidebar untuk memperkaya pengalaman pengguna.
 
-## Prasyarat
+### Prasyarat
 
 Sebelum menjalankan aplikasi ini, pastikan Anda memiliki **Python** yang terinstal di sistem Anda. Berikut adalah daftar pustaka yang dibutuhkan:
 
@@ -32,13 +32,13 @@ Pilih salah satu cara berikut untuk setup lingkungan pengembangan:
 
 Jika Anda menggunakan **Anaconda**, Anda dapat mengikuti langkah-langkah berikut untuk membuat lingkungan terpisah:
 
-# Membuat lingkungan virtual dengan Anaconda
+### Membuat lingkungan virtual dengan Anaconda
 conda create --name main-ds python=3.9
 
-# Mengaktifkan lingkungan
+### Mengaktifkan lingkungan
 conda activate main-ds
 
-# Install dependencies dari requirements.txt
+### Install dependencies dari requirements.txt
 pip install -r requirements.txt
 
 
