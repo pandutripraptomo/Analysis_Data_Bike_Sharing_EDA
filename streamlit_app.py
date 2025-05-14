@@ -76,8 +76,8 @@ min_date = all_df["dteday"].min()
 max_date = all_df["dteday"].max()
 
 with st.sidebar:
-    # Menampilkan GIF atau animasi di sidebar
-    st.image("https://media.giphy.com/media/3o7btJgJ2nInMe0d5u/giphy.gif", use_column_width=True)
+    # Menampilkan GIF sepeda dari URL yang diberikan
+    st.image("https://github.com/pandutripraptomo/Analysis_Data_Bike_Sharing_EDA/blob/main/Streamlit_Dashboard/Postal%20Worker%20Bike%20GIF%20by%20Xbox.gif?raw=true", use_column_width=True)
     
     start_date, end_date = st.date_input(
         label='Rentang Waktu', min_value=min_date,
