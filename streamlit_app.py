@@ -76,9 +76,7 @@ min_date = all_df["dteday"].min()
 max_date = all_df["dteday"].max()
 
 with st.sidebar:
-    # Menampilkan GIF sepeda dari URL yang diberikan
-    st.image("https://raw.githubusercontent.com/pandutripraptomo/Analysis_Data_Bike_Sharing_EDA/main/Streamlit_Dashboard/bike.gif")
-    
+   
     start_date, end_date = st.date_input(
         label='Rentang Waktu', min_value=min_date,
         max_value=max_date,
@@ -184,7 +182,6 @@ with col2:
 
 st.subheader("Customer based on Hour")
 
-# Mengganti bar chart menjadi pie chart untuk peminjaman berdasarkan jam
 plt.figure(figsize=(10, 6))
 byhour_df.plot(kind='pie', y='total_customer', legend=False, autopct='%1.1f%%', colors=['skyblue'], wedgeprops={'edgecolor': 'black'})
 plt.title('Total Bike Rentals by Hour of the Day')
@@ -194,7 +191,6 @@ st.pyplot(plt)
 
 st.subheader ("Customer Clustering by Day and Hour")
 
-# Mengganti heatmap menjadi line plot
 plt.figure(figsize=(12, 8))
 sns.lineplot(data=clustering, palette="YlGnBu", dashes=False)
 plt.title('Bike Rentals Line Plot by Weekday and Hour')
@@ -206,7 +202,7 @@ st.pyplot(plt)
 st.subheader('Registered Customer and Casual Customers')
 
 fig, ax = plt.subplots(figsize=(16, 8))
-# Mengganti line chart menjadi scatter plot
+
 ax.scatter(
     monthly_rentals_df["dteday"],
     monthly_rentals_df["total_registered"], 
@@ -235,7 +231,6 @@ labels = ['Registered', 'Casual']
 sizes = [total_registered, total_casual]
 colors_typecust = ['skyblue', 'gold']
 
-# Mengganti pie chart dengan donut chart
 ax.pie(sizes, labels=labels, colors=typecust_colors, autopct='%1.1f%%', startangle=140, pctdistance=0.85, textprops={'fontsize': 14})
 ax.axis('equal')
 plt.tight_layout() 
