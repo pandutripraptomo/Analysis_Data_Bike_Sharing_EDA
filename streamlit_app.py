@@ -4,7 +4,64 @@ import seaborn as sns
 import streamlit as st
 sns.set(style='dark')
 
-# Proses data dan fungsi pembuatan dataframe tetap sama seperti sebelumnya
+def create_daily_rentals_df(df):
+    daily_rentals_df = df.resample(rule='D', on='dteday').agg({
+        "registered": "sum",
+        "casual": "sum",
+        "cnt": "sum"
+    })
+    daily_rentals_df = daily_rentals_df.reset_index()
+    daily_rentals_df.rename(columns={
+        "registered": "total_registered",
+        "casual": "total_casual",
+        "cnt": "total_customer"
+    }, inplace=True)
+    
+    return daily_rentals_df
+
+def create_monthly_rentals_df(df):
+    monthly_rentals_df = df.resample(rule='M', on='dteday').agg({
+        "registered": "sum",
+        "casual": "sum",
+        "cnt": "sum"
+    })
+    monthly_rentals_df = monthly_rentals_df.reset_index()
+    monthly_rentals_df.rename(columns={
+        "registered": "total_registered",
+        "casual": "total_casual",
+        "cnt": "total_customer"
+    }, inplace=True)
+    
+    return monthly_rentals_df
+
+def create_byhour_df(df):
+    byhour_df = df.groupby(by="hr").cnt.sum().reset_index()
+    byhour_df.rename(columns={
+        "cnt": "total_customer"
+    }, inplace=True)
+
+    return byhour_df
+
+def create_byseasons_df(df):
+    byseason_df = df.groupby(by="season").cnt.sum().reset_index()
+    byseason_df.rename(columns={
+        "cnt": "total_customer"
+    }, inplace=True)
+    
+    return byseason_df
+
+def create_byweather_df(df):
+    byweather_df = df.groupby(by="weathersit").cnt.sum().reset_index()
+    byweather_df.rename(columns={
+        "cnt": "total_customer"
+    }, inplace=True)
+    
+    return byweather_df
+
+def create_clustering(df):
+    clustering = df.groupby(['weekday', 'hr'])['cnt'].sum().unstack()
+
+    return clustering
 
 all_df = pd.read_csv("https://raw.githubusercontent.com/pandutripraptomo/Analysis_Data_Bike_Sharing_EDA/refs/heads/main/main_data.csv")
 
@@ -19,7 +76,8 @@ min_date = all_df["dteday"].min()
 max_date = all_df["dteday"].max()
 
 with st.sidebar:
-    st.image("https://raw.githubusercontent.com/pandutripraptomo/Analysis_Data_Bike_Sharing_EDA/logo.jpg")
+    # Menampilkan GIF atau animasi di sidebar
+    st.image("https://media.giphy.com/media/3o7btJgJ2nInMe0d5u/giphy.gif", use_column_width=True)
     
     start_date, end_date = st.date_input(
         label='Rentang Waktu', min_value=min_date,
@@ -58,11 +116,11 @@ with col3:
 
 st.subheader('Monthly Rentals')
 fig, ax = plt.subplots(figsize=(16, 8))
-
-# Mengubah line chart menjadi bar chart
-ax.bar(
+ax.plot(
     monthly_rentals_df["dteday"],
     monthly_rentals_df["total_customer"],
+    marker='o', 
+    linewidth=2,
     color="skyblue"
 )
 ax.set_xlabel("Month", fontsize=15)
@@ -94,7 +152,6 @@ col1, col2 = st.columns(2)
 
 with col1:
     fig, ax = plt.subplots(figsize=(30,15))
-    # Mengganti bar chart menjadi stacked bar chart
     sns.barplot(
         y='total_customer', 
         x='season',
@@ -111,7 +168,6 @@ with col1:
 
 with col2:
     fig, ax = plt.subplots(figsize=(30,15))
-    # Mengganti bar chart menjadi pie chart
     sns.barplot(
         y='total_customer', 
         x='weathersit',
