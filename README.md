@@ -47,17 +47,17 @@ pip install -r requirements.txt
 Jika Anda menggunakan **pipenv**, berikut adalah langkah-langkah untuk setup proyek:
 
 
-# Membuat direktori proyek
+### Membuat direktori proyek
 mkdir proyek_analisis_data
 cd proyek_analisis_data
 
-# Install dependencies dengan pipenv
+### Install dependencies dengan pipenv
 pipenv install
 
-# Masuk ke shell pipenv
+### Masuk ke shell pipenv
 pipenv shell
 
-# Install dependencies dari requirements.txt
+### Install dependencies dari requirements.txt
 pip install -r requirements.txt
 
 
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 Setelah menyiapkan lingkungan, Anda dapat menjalankan aplikasi **Streamlit** dengan langkah-langkah berikut:
 
 
-# Jalankan aplikasi Streamlit
+### Jalankan aplikasi Streamlit
 streamlit run dashboard.py
 
 
