@@ -1,114 +1,67 @@
-# Bike Sharing Data Analysis Dashboard ✨
+Berikut ringkasan dan panduan penggunaan proyek analisis data peminjaman sepeda tahun 2011-2012:
 
-## Deskripsi Proyek
+---
 
-Proyek ini adalah aplikasi **Streamlit** yang menganalisis dan memvisualisasikan data peminjaman sepeda menggunakan dataset **Bike Sharing**. Aplikasi ini mengintegrasikan berbagai analisis data, visualisasi interaktif, dan fitur-fitur menarik untuk memudahkan pemahaman tentang pola penggunaan sepeda berdasarkan waktu, cuaca, musim, dan jenis pelanggan.
+# Analisis dan Dashboard Data Peminjaman Sepeda (2011-2012)
 
-### Fitur Utama:
-- **Dashboard Interaktif** yang menampilkan data peminjaman sepeda harian, bulanan, berdasarkan jam, musim, dan cuaca.
-- **Grafik dan Visualisasi** menggunakan **Matplotlib**, **Seaborn**, dan **Plotly**.
-- **Analisis** berdasarkan:
-  - Jumlah peminjam sepeda harian dan bulanan.
-  - Distribusi peminjaman berdasarkan jam, cuaca, dan musim.
-  - Analisis cluster berdasarkan hari dan jam.
-- **Menampilkan GIF animasi** sepeda yang menarik di sidebar untuk memperkaya pengalaman pengguna.
+Proyek ini menganalisis performa peminjaman sepeda dari tahun 2011 hingga 2012, serta menyediakan panduan untuk menjalankan *dashboard* visualisasinya.
 
-### Prasyarat
+## Ikhtisar Performa Peminjaman Sepeda
 
-Sebelum menjalankan aplikasi ini, pastikan Anda memiliki **Python** yang terinstal di sistem Anda. Berikut adalah daftar pustaka yang dibutuhkan:
+Jumlah peminjaman sepeda menunjukkan **peningkatan signifikan setiap tahun dari kuartal 2 ke kuartal 3**, diikuti penurunan di akhir tahun.
 
-- **Streamlit**: Untuk membuat dashboard interaktif.
-- **Pandas**: Untuk manipulasi data.
-- **Matplotlib**: Untuk membuat visualisasi grafik.
-- **Seaborn**: Untuk visualisasi statistik.
-- **Plotly**: Untuk grafik interaktif.
-- **Streamlit-folium**: Jika ingin menambahkan peta interaktif (opsional).
+### Kondisi Peminjaman Tertinggi
 
-### Setup Environment
+Peminjaman sepeda mencapai puncaknya pada kondisi berikut:
+* **Musim Gugur** adalah musim dengan peminjaman tertinggi.
+* **Cuaca cerah atau sedikit berawan** paling banyak diminati.
+* **Waktu tersibuk** adalah pukul 5-6 sore dan pukul 8 pagi.
+* **Hari kerja (Senin-Jumat)** menunjukkan jumlah peminjam yang lebih tinggi, sementara **Sabtu dan Minggu** ramai dari jam 12 siang hingga 3 sore.
 
-Pilih salah satu cara berikut untuk setup lingkungan pengembangan:
+### Profil Peminjam
 
-### 1. **Setup Environment - Anaconda**
+* **Pelanggan terdaftar** jauh lebih banyak dibandingkan peminjam biasa.
+* Meskipun jumlahnya lebih sedikit, ada **potensi besar untuk menarik peminjam baru (pengguna kasual)** melalui strategi pemasaran yang tepat.
 
-Jika Anda menggunakan **Anaconda**, Anda dapat mengikuti langkah-langkah berikut untuk membuat lingkungan terpisah:
+## Kesimpulan dan Rekomendasi
 
-### Membuat lingkungan virtual dengan Anaconda
-conda create --name main-ds python=3.9
+Untuk meningkatkan peminjaman sepeda, fokuskan strategi pemasaran pada:
+* **Menarik lebih banyak peminjam baru** yang belum terdaftar.
+* **Memanfaatkan waktu dan kondisi cuaca puncak** yang telah teridentifikasi.
 
-### Mengaktifkan lingkungan
+Dengan menerapkan rekomendasi ini, diharapkan bisnis dapat meningkatkan performa dan memperluas basis pelanggannya.
+
+---
+
+## Cara Menjalankan Dashboard Secara Lokal
+
+Ikuti langkah-langkah di bawah ini untuk menginstal dependensi dan menjalankan *dashboard* di perangkat Anda.
+
+### Instalasi Dependensi
+
+#### Menggunakan Anaconda
+
+```bash
+conda create --name main-ds python=3.11.9
 conda activate main-ds
-
-### Install dependencies dari requirements.txt
 pip install -r requirements.txt
+```
 
+#### Menggunakan Shell/Terminal Biasa
 
-### 2. **Setup Environment - Shell/Terminal**
-
-Jika Anda menggunakan **pipenv**, berikut adalah langkah-langkah untuk setup proyek:
-
-
-### Membuat direktori proyek
+```bash
 mkdir proyek_analisis_data
 cd proyek_analisis_data
-
-### Install dependencies dengan pipenv
 pipenv install
-
-### Masuk ke shell pipenv
 pipenv shell
-
-### Install dependencies dari requirements.txt
 pip install -r requirements.txt
+```
 
+### Menjalankan Dashboard
 
-## Menjalankan Aplikasi
+Setelah instalasi selesai, jalankan perintah ini di terminal:
 
-Setelah menyiapkan lingkungan, Anda dapat menjalankan aplikasi **Streamlit** dengan langkah-langkah berikut:
-
-
-### Jalankan aplikasi Streamlit
+```bash
+cd dashboard
 streamlit run dashboard.py
-
-
-Aplikasi ini akan terbuka di browser default Anda.
-
-## Fitur Aplikasi
-
-* **Data Interaktif**: Gunakan filter tanggal untuk menyesuaikan rentang waktu yang ingin Anda lihat.
-* **Grafik Peminjaman Sepeda**: Menampilkan grafik bulanan dan harian mengenai peminjaman sepeda secara keseluruhan, peminjam terdaftar, dan peminjam kasual.
-* **Analisis Berdasarkan Jam dan Musim**: Menampilkan tren peminjaman sepeda berdasarkan jam dalam sehari dan musim.
-* **Pemetaan Interaktif**: Visualisasikan data berbasis lokasi dengan peta interaktif (jika ditambahkan).
-
-## Struktur Proyek
-
-Bike-Sharing-Dashboard/
-├── dashboard.py            # Aplikasi Streamlit utama
-├── data/
-│   ├── bike_sharing.csv   # Dataset Bike Sharing
-├── images/
-│   └── logo.gif           # GIF atau gambar logo yang digunakan di aplikasi
-└── README.md              # Dokumentasi proyek
-
-## Penulis
-
-* **Pandu Tri Praptomo** - [LinkedIn](https://www.linkedin.com/in/pandutripraptomo/) | [GitHub](https://github.com/pandutripraptomo)
-
-## Lisensi
-
-Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detail lebih lanjut.
-
-## Kontak
-
-Jika Anda memiliki pertanyaan atau ingin berkontribusi dalam pengembangan proyek ini, jangan ragu untuk menghubungi saya di **[pandutripraptomo@gmail.com](mailto:pandutripraptomo@gmail.com)**.
-
-### Penjelasan:
-1. **Deskripsi Proyek**: Menggambarkan aplikasi yang dibangun dengan tujuan analisis data peminjaman sepeda.
-2. **Prasyarat**: Menyebutkan pustaka yang dibutuhkan untuk menjalankan aplikasi.
-3. **Setup Environment**: Menyediakan dua opsi untuk setup lingkungan pengembangan, yaitu menggunakan Anaconda atau `pipenv` dengan instruksi yang jelas.
-4. **Menjalankan Aplikasi**: Memberikan instruksi untuk menjalankan aplikasi Streamlit dengan perintah `streamlit run`.
-5. **Fitur Aplikasi**: Menyediakan rincian tentang fitur utama aplikasi.
-6. **Struktur Proyek**: Memberikan gambaran tentang struktur folder dan file dalam proyek.
-7. **Penulis dan Lisensi**: Menyertakan informasi tentang kontributor proyek dan lisensinya.
-
-Anda dapat menyesuaikan lebih lanjut jika ada detail atau fitur tambahan pada proyek Anda!
-
+```
