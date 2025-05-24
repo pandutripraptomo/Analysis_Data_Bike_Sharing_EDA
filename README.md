@@ -1,4 +1,3 @@
-Berikut ringkasan dan panduan penggunaan proyek analisis data peminjaman sepeda tahun 2011-2012:
 
 ---
 
