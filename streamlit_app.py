@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 sns.set(style='dark')
-
+    
 def create_daily_rentals_df(df):
     daily_rentals_df = df.resample(rule='D', on='dteday').agg({
         "registered": "sum",
@@ -68,7 +68,7 @@ all_df = pd.read_csv("https://raw.githubusercontent.com/pandutripraptomo/Analysi
 datetime_columns = ["dteday"]
 all_df.sort_values(by="dteday", inplace=True)
 all_df.reset_index(inplace=True)
-
+ 
 for column in datetime_columns:
     all_df[column] = pd.to_datetime(all_df[column])
 
@@ -77,14 +77,16 @@ max_date = all_df["dteday"].max()
 
 with st.sidebar:
     st.image("https://raw.githubusercontent.com/pandutripraptomo/Analysis_Data_Bike_Sharing_EDA/main/Streamlit_Dashboard/bike.gif")
+    
     start_date, end_date = st.date_input(
-        label='Rentang Waktu', min_value=min_date,
+        label='Rentang Waktu',min_value=min_date,
         max_value=max_date,
         value=[min_date, max_date]
     )
 
 main_df = all_df[(all_df["dteday"] >= str(start_date)) & 
                 (all_df["dteday"] <= str(end_date))]
+
 
 byhour_df = create_byhour_df(main_df)
 daily_rentals_df = create_daily_rentals_df(main_df)
@@ -94,16 +96,16 @@ byseason_df = create_byseasons_df(main_df)
 byweather_df = create_byweather_df(main_df)
 clustering = create_clustering(main_df)
 
-st.header('Pandu Tri Praptomo - Bike Sharing Dashboard 🚲')
+st.header('Bike Sharing Dashboard 🚲')
 
 st.subheader('Daily Rentals')
-
+ 
 col1, col2, col3 = st.columns(3)
-
+ 
 with col1:
     total_rentals = daily_rentals_df.total_customer.sum()
     st.metric("Total Rentals", value=total_rentals)
-
+ 
 with col2:
     total_registered = daily_rentals_df.total_registered.sum()
     st.metric("Total Registered Customer", value=total_registered)
@@ -145,9 +147,9 @@ weather_colors = {
 }
 
 st.subheader("Rental Patterns")
-
+ 
 col1, col2 = st.columns(2)
-
+ 
 with col1:
     fig, ax = plt.subplots(figsize=(30,15))
     sns.barplot(
@@ -183,17 +185,20 @@ with col2:
 st.subheader("Customer based on Hour")
 
 plt.figure(figsize=(10, 6))
-byhour_df.plot(kind='pie', y='total_customer', legend=False, autopct='%1.1f%%', colors=['skyblue'], wedgeprops={'edgecolor': 'black'})
+byhour_df.plot(kind='bar', color='skyblue', legend=False, edgecolor='none', linewidth=2)
 plt.title('Total Bike Rentals by Hour of the Day')
-plt.ylabel('')
-
+plt.xlabel('Hour')
+plt.ylabel('total_customer')
+plt.xticks(rotation=0)
+plt.grid(axis='y')
+plt.tight_layout()
 st.pyplot(plt)
 
 st.subheader ("Customer Clustering by Day and Hour")
 
 plt.figure(figsize=(12, 8))
-sns.lineplot(data=clustering, palette="YlGnBu", dashes=False)
-plt.title('Bike Rentals Line Plot by Weekday and Hour')
+sns.heatmap(clustering, cmap="YlGnBu", annot=False, fmt=".0f")
+plt.title('Bike Rentals Heatmap by Weekday and Hour')
 plt.xlabel('Hour of the Day')
 plt.ylabel('Day of the Week')
 
@@ -202,15 +207,16 @@ st.pyplot(plt)
 st.subheader('Registered Customer and Casual Customers')
 
 fig, ax = plt.subplots(figsize=(16, 8))
-
-ax.scatter(
+ax.plot(
     monthly_rentals_df["dteday"],
     monthly_rentals_df["total_registered"], 
-    label='Registered Rentals', color="blue", alpha=0.7)
-ax.scatter(
+    marker='o', 
+    label='Registered Rentals')
+plt.plot(
     monthly_rentals_df["dteday"], 
     monthly_rentals_df["total_casual"], 
-    label='Casual Rentals', color="gold", alpha=0.7)
+    marker='o', 
+    label='Casual Rentals')
 
 ax.set_xlabel("Month")
 ax.set_ylabel("Total Customers")
@@ -232,9 +238,11 @@ sizes = [total_registered, total_casual]
 colors_typecust = ['skyblue', 'gold']
 
 ax.pie(sizes, labels=labels, colors=typecust_colors, autopct='%1.1f%%', startangle=140, pctdistance=0.85, textprops={'fontsize': 14})
+
 ax.axis('equal')
 plt.tight_layout() 
 ax.set_title("Percentage of Registered vs Casual Customer", fontsize=20 , pad=20)
 st.pyplot(fig) 
 
-st.caption('Copyright © Pandu Tri Praptomo 2025')
+
+st.caption('Copyright ©Pandu Tri Praptomo')
